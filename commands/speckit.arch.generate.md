@@ -26,7 +26,7 @@ Generate or update the project-level architecture SSOT as 4+1 architecture artif
 
 The scenario view is the entry point. It produces the UC semantics for this architecture pass: actors, goals, use cases, scenario paths, branches, and acceptance meaning. The other four views are derived from the scenario view.
 
-The six artifacts are the authoritative architecture design source for later iterations. They serve two purposes: produce high-quality 4+1 architecture reasoning in this command, and constrain later `plan` reasoning to stay inside the architecture SSOT.
+The six artifacts are the authoritative architecture design source. They preserve project-level architecture intent, boundaries, tradeoffs, constraints, and unresolved gaps as 4+1 architecture reasoning.
 
 ## Operating Boundaries
 
@@ -41,7 +41,7 @@ The six artifacts are the authoritative architecture design source for later ite
 
 ### Architecture Reasoning Layer
 
-Reason only in the 4+1 views. Use each view template as the source of truth for that view's reasoning contract and artifact structure. Produce architecture design inference, not tracking, audit, or implementation planning. Maintain a cross-view architecture model that normalizes architecture meaning for synthesis and later `plan` reasoning while preserving each view's distinct concept type. Every conclusion must still be grounded in a scenario, object, state, collaboration, boundary, deployment constraint, or stated external constraint. Do not translate, rename, or equate concepts across views through notation-specific terms.
+Reason only in the 4+1 views. Use each view template as the source of truth for that view's reasoning contract and artifact structure. Produce architecture design inference, not tracking, audit, or implementation planning. Maintain a cross-view architecture model that normalizes architecture meaning for synthesis while preserving each view's distinct concept type. Every conclusion must still be grounded in a scenario, object, state, collaboration, boundary, deployment constraint, or stated external constraint. Do not translate, rename, or equate concepts across views through notation-specific terms.
 
 ### Representation Layer
 

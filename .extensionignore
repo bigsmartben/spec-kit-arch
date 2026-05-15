@@ -4,3 +4,4 @@
 __pycache__/
 *.py[cod]
 CATALOG-SUBMISSION.md
+presets/
