@@ -2,6 +2,13 @@
 
 Generate or refresh project-level 4+1 architecture artifacts for a Spec Kit project.
 
+This repository provides two independent Spec Kit integrations:
+
+- An extension that installs the explicit architecture workflow command.
+- An optional preset that injects architecture SSOT context into core planning.
+
+## Extension
+
 The extension installs one command:
 
 ```text
@@ -10,7 +17,7 @@ The extension installs one command:
 
 It writes architecture memory under `.specify/memory/` and keeps the workflow separate from the Spec Kit core package.
 
-## Install
+### Install
 
 Install the released extension:
 
@@ -24,7 +31,7 @@ Install from a local development checkout:
 specify extension add --dev /home/administrator/github/spec-kit-arch
 ```
 
-## Use
+### Use
 
 Run the registered command in your AI coding agent:
 
@@ -34,7 +41,7 @@ Run the registered command in your AI coding agent:
 
 The command bootstraps the architecture artifacts if they are missing, reads existing architecture files and optional `.specify/memory/uc.md` context, then asks the agent to fill or refresh the 4+1 views and synthesis.
 
-## Files Written
+### Files Written
 
 The workflow writes only these files:
 
@@ -49,7 +56,7 @@ The workflow writes only these files:
 
 It does not edit `.specify/memory/uc.md`, `.specify/memory/constitution.md`, feature specs, plans, tasks, source code, tests, root `docs/`, deployment manifests, or runbooks.
 
-## Installed Layout
+### Installed Layout
 
 After installation, Spec Kit copies this extension under:
 
@@ -64,6 +71,18 @@ The command uses the bundled setup scripts from that installed path:
 .specify/extensions/arch/scripts/powershell/setup-arch.ps1
 ```
 
+## Preset
+
+The optional preset wraps only the core `/speckit.plan` command. It reads architecture files from `.specify/memory/` when present and grounds plan reasoning inside the architecture SSOT.
+
+Install from a local development checkout:
+
+```bash
+specify preset add --dev /home/administrator/github/spec-kit-arch/presets/arch-governance
+```
+
+The preset does not override `/speckit.tasks` or `/speckit.implement`.
+
 ## Development
 
 Validate the extension from a fresh project:
@@ -73,6 +92,15 @@ specify init /tmp/spec-kit-arch-test --ai codex --ignore-agent-tools --script sh
 cd /tmp/spec-kit-arch-test
 specify extension add --dev /home/administrator/github/spec-kit-arch
 .specify/extensions/arch/scripts/bash/setup-arch.sh --json
+```
+
+Validate the preset from a fresh project:
+
+```bash
+specify init /tmp/spec-kit-arch-preset-test --ai codex --ignore-agent-tools --script sh
+cd /tmp/spec-kit-arch-preset-test
+specify preset add --dev /home/administrator/github/spec-kit-arch/presets/arch-governance
+rg -n "Architecture SSOT Injection|Architecture Grounding Summary" .agents/skills/speckit-plan/SKILL.md
 ```
 
 The extension intentionally does not provide the legacy `/speckit.arch` command.
