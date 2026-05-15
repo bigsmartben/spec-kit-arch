@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add `/speckit.arch.reverse` for repo-facts-first reverse generation of architecture artifacts from ordinary historical repositories.
 - Add the `arch-governance` preset to wrap only the core `/speckit.plan` workflow with architecture SSOT grounding.
 - Keep `/speckit.arch.generate` independent from core workflow commands by removing downstream planning language from architecture artifacts.
 

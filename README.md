@@ -4,15 +4,16 @@ Generate or refresh project-level 4+1 architecture artifacts for a Spec Kit proj
 
 This repository provides two independent Spec Kit integrations:
 
-- An extension that installs the explicit architecture workflow command.
+- An extension that installs the explicit architecture workflow commands.
 - An optional preset that injects architecture SSOT context into core planning.
 
 ## Extension
 
-The extension installs one command:
+The extension installs two commands:
 
 ```text
 /speckit.arch.generate
+/speckit.arch.reverse
 ```
 
 It writes architecture memory under `.specify/memory/` and keeps the workflow separate from the Spec Kit core package.
@@ -22,7 +23,7 @@ It writes architecture memory under `.specify/memory/` and keeps the workflow se
 Install the released extension:
 
 ```bash
-specify extension add arch --from https://github.com/bigsmartben/spec-kit-arch/archive/refs/tags/v1.0.0.zip
+specify extension add arch --from https://github.com/bigsmartben/spec-kit-arch/archive/refs/tags/v1.1.0.zip
 ```
 
 Install from a local development checkout:
@@ -41,11 +42,20 @@ Run the registered command in your AI coding agent:
 
 The command bootstraps the architecture artifacts if they are missing, reads existing architecture files and optional `.specify/memory/uc.md` context, then asks the agent to fill or refresh the 4+1 views and synthesis.
 
+Run the reverse command in an ordinary historical repository when architecture should be inferred from repo facts:
+
+```text
+/speckit.arch.reverse
+```
+
+The reverse command first writes `.specify/memory/architecture-repo-facts.md`, then derives the 4+1 view files and synthesis from those evidence-backed facts. Use it when the repository does not already have Spec Kit feature context.
+
 ### Files Written
 
 The workflow writes only these files:
 
 ```text
+.specify/memory/architecture-repo-facts.md
 .specify/memory/architecture.md
 .specify/memory/architecture-scenario-view.md
 .specify/memory/architecture-logical-view.md
@@ -53,6 +63,8 @@ The workflow writes only these files:
 .specify/memory/architecture-development-view.md
 .specify/memory/architecture-physical-view.md
 ```
+
+`/speckit.arch.generate` populates the six architecture SSOT files. Its setup may also bootstrap `.specify/memory/architecture-repo-facts.md` when missing. `/speckit.arch.reverse` populates those six files plus `.specify/memory/architecture-repo-facts.md` as its evidence layer.
 
 It does not edit `.specify/memory/uc.md`, `.specify/memory/constitution.md`, feature specs, plans, tasks, source code, tests, root `docs/`, deployment manifests, or runbooks.
 
