@@ -50,6 +50,8 @@ Run the reverse command in an ordinary historical repository when architecture s
 
 The reverse command first writes `.specify/memory/architecture-repo-facts.md`, then derives the 4+1 view files and synthesis from those evidence-backed facts. Use it when the repository does not already have Spec Kit feature context.
 
+If `.specify/memory/repository-first/` exists, `/speckit.arch.reverse` treats those files as optional evidence inputs. It summarizes repository-first dependency matrices and module invocation specs into repo facts, then carries only architecture-level constraints, dependency rules, gaps, and review triggers into the 4+1 views.
+
 ### Files Written
 
 The workflow writes only these files:

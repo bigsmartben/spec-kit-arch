@@ -3,5 +3,6 @@
 .pytest_cache/
 __pycache__/
 *.py[cod]
+tests/
 CATALOG-SUBMISSION.md
 presets/

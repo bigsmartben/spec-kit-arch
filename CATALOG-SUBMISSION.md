@@ -18,6 +18,7 @@ Key features:
 - Generates or refreshes six architecture memory artifacts.
 - Provides `/speckit.arch.reverse` for evidence-backed architecture reconstruction from ordinary historical repositories.
 - Records reverse workflow evidence in `.specify/memory/architecture-repo-facts.md`.
+- Consumes optional repository-first dependency matrices and module invocation specs as reverse workflow evidence.
 - Guides scenario, logical, process, development, physical, and synthesis views.
 - Restricts writes to documented `.specify/memory/architecture*.md` files, including repo facts for reverse generation.
 
