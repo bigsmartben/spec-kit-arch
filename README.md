@@ -20,7 +20,7 @@ It writes architecture memory under `.specify/memory/` and keeps the workflow se
 
 ### Install
 
-Install the released extension:
+After `v1.1.0` is published, install that release with:
 
 ```bash
 specify extension add arch --from https://github.com/bigsmartben/spec-kit-arch/archive/refs/tags/v1.1.0.zip

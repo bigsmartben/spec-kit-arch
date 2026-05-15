@@ -31,6 +31,7 @@ The six artifacts are the authoritative architecture design source. They preserv
 ## Operating Boundaries
 
 - Write only the six architecture artifacts listed above.
+- Setup may create `.specify/memory/architecture-repo-facts.md` as a placeholder for reverse workflow compatibility, but generate must not load, populate, or update it.
 - Do not require `.specify/memory/uc.md`. If it exists, read it only as supporting reference, not as a hard prerequisite or sole source of truth.
 - Do not modify `.specify/memory/uc.md`, `.specify/memory/constitution.md`, feature specs, plans, tasks, source code, tests, or root `docs/`.
 - Stay at abstract architecture-design level.
@@ -54,10 +55,11 @@ Markdown tables are the default artifact structure. Optional diagrams are render
 
 ## Outline
 
-1. **Setup**: Run `{SCRIPT}` from repo root and parse JSON for `ARCH_FILE`, `ARCH_DIR`, `SCENARIO_VIEW`, `LOGICAL_VIEW`, `PROCESS_VIEW`, `DEVELOPMENT_VIEW`, and `PHYSICAL_VIEW`.
+1. **Setup**: Run `{SCRIPT}` from repo root and parse JSON for `ARCH_FILE`, `ARCH_DIR`, `SCENARIO_VIEW`, `LOGICAL_VIEW`, `PROCESS_VIEW`, `DEVELOPMENT_VIEW`, and `PHYSICAL_VIEW`. The setup JSON may also include `REPO_FACTS_FILE` for reverse workflow compatibility; acknowledge it and ignore it for this generate workflow.
 
 2. **Load context**:
    - Read all six architecture artifacts created by setup.
+   - Do not read `REPO_FACTS_FILE` or `.specify/memory/architecture-repo-facts.md`.
    - Read `.specify/memory/uc.md` if present as optional scenario background.
    - Read the six architecture templates under `.specify/extensions/arch/templates/`.
 

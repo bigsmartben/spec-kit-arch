@@ -3,7 +3,7 @@
 Extension ID: arch
 Name: Architecture Workflow
 Version: 1.1.0
-Description: Generate project-level 4+1 architecture view artifacts and synthesis
+Description: Generate or reverse project-level 4+1 architecture view artifacts and synthesis
 Author: bigsmartben
 Repository URL: https://github.com/bigsmartben/spec-kit-arch
 Download URL: https://github.com/bigsmartben/spec-kit-arch/archive/refs/tags/v1.1.0.zip
