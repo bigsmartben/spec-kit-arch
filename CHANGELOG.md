@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Use CLI-compatible command names such as `/speckit.arch.scenario-generate` and `/speckit.arch.scenario-reverse`.
 - Clarify command bootstrap boundaries, synthesis readiness checks, reverse repo-facts merge behavior, and source traceability expectations.
 - Replace the two broad architecture commands with ten `.arch`-namespaced commands: forward and reverse generation for scenario, logical, process, development, and physical views.
 - Keep synthesis refresh optional for per-view commands so each command owns one primary 4+1 artifact.
