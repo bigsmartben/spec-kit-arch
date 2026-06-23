@@ -29,7 +29,7 @@ specify extension info arch
 Community catalog entries may be discovery-only. Install the published release directly from GitHub:
 
 ```bash
-specify extension add arch --from https://github.com/bigsmartben/spec-kit-arch/archive/refs/tags/v1.2.0.zip
+specify extension add arch --from https://github.com/bigsmartben/spec-kit-arch/archive/refs/tags/v1.2.1.zip
 ```
 
 Install from a local development checkout:
@@ -49,16 +49,16 @@ After installation, the extension is copied under:
 The extension id is `arch`, and each command uses `.arch` as the command namespace. The extension provides ten commands: one forward-generation command and one reverse-generation command for each 4+1 architecture view.
 
 ```text
-/speckit.arch.scenario.generate
-/speckit.arch.logical.generate
-/speckit.arch.process.generate
-/speckit.arch.development.generate
-/speckit.arch.physical.generate
-/speckit.arch.scenario.reverse
-/speckit.arch.logical.reverse
-/speckit.arch.process.reverse
-/speckit.arch.development.reverse
-/speckit.arch.physical.reverse
+/speckit.arch.scenario-generate
+/speckit.arch.logical-generate
+/speckit.arch.process-generate
+/speckit.arch.development-generate
+/speckit.arch.physical-generate
+/speckit.arch.scenario-reverse
+/speckit.arch.logical-reverse
+/speckit.arch.process-reverse
+/speckit.arch.development-reverse
+/speckit.arch.physical-reverse
 ```
 
 Choose the direction based on where architecture knowledge should come from, then choose the view you want to update.
@@ -70,11 +70,11 @@ Choose the direction based on where architecture knowledge should come from, the
 
 | View | Forward command | Reverse command | Main artifact |
 | --- | --- | --- | --- |
-| Scenario | `/speckit.arch.scenario.generate` | `/speckit.arch.scenario.reverse` | `.specify/memory/architecture-scenario-view.md` |
-| Logical | `/speckit.arch.logical.generate` | `/speckit.arch.logical.reverse` | `.specify/memory/architecture-logical-view.md` |
-| Process | `/speckit.arch.process.generate` | `/speckit.arch.process.reverse` | `.specify/memory/architecture-process-view.md` |
-| Development | `/speckit.arch.development.generate` | `/speckit.arch.development.reverse` | `.specify/memory/architecture-development-view.md` |
-| Physical | `/speckit.arch.physical.generate` | `/speckit.arch.physical.reverse` | `.specify/memory/architecture-physical-view.md` |
+| Scenario | `/speckit.arch.scenario-generate` | `/speckit.arch.scenario-reverse` | `.specify/memory/architecture-scenario-view.md` |
+| Logical | `/speckit.arch.logical-generate` | `/speckit.arch.logical-reverse` | `.specify/memory/architecture-logical-view.md` |
+| Process | `/speckit.arch.process-generate` | `/speckit.arch.process-reverse` | `.specify/memory/architecture-process-view.md` |
+| Development | `/speckit.arch.development-generate` | `/speckit.arch.development-reverse` | `.specify/memory/architecture-development-view.md` |
+| Physical | `/speckit.arch.physical-generate` | `/speckit.arch.physical-reverse` | `.specify/memory/architecture-physical-view.md` |
 
 ### Forward Generation
 
@@ -82,11 +82,11 @@ Run `*.generate` commands when you already know what the project is meant to bec
 
 Recommended order:
 
-1. `/speckit.arch.scenario.generate`
-2. `/speckit.arch.logical.generate`
-3. `/speckit.arch.process.generate`
-4. `/speckit.arch.development.generate`
-5. `/speckit.arch.physical.generate`
+1. `/speckit.arch.scenario-generate`
+2. `/speckit.arch.logical-generate`
+3. `/speckit.arch.process-generate`
+4. `/speckit.arch.development-generate`
+5. `/speckit.arch.physical-generate`
 
 Use it to answer questions like:
 
@@ -105,11 +105,11 @@ Run `*.reverse` commands when the repository already exists but the architecture
 
 Recommended order:
 
-1. `/speckit.arch.scenario.reverse`
-2. `/speckit.arch.logical.reverse`
-3. `/speckit.arch.process.reverse`
-4. `/speckit.arch.development.reverse`
-5. `/speckit.arch.physical.reverse`
+1. `/speckit.arch.scenario-reverse`
+2. `/speckit.arch.logical-reverse`
+3. `/speckit.arch.process-reverse`
+4. `/speckit.arch.development-reverse`
+5. `/speckit.arch.physical-reverse`
 
 Each reverse command inspects repository evidence first, writes or refreshes `.specify/memory/architecture-repo-facts.md`, then derives the selected 4+1 view from those facts. The repo facts file is cumulative: reverse commands preserve existing non-placeholder facts outside their evidence focus unless cited evidence is removed, contradicted, or superseded, and they record the reason for any replacement or downgrade. A reverse command may refresh `.specify/memory/architecture.md` after all five views contain coherent, evidence-backed architecture content.
 
