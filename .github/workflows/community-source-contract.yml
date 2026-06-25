@@ -40,12 +40,8 @@ jobs:
 
           root = Path.cwd()
           manifest_path = root / "extension.yml"
-          manifest_kind = "extension"
           if not manifest_path.is_file():
-              manifest_path = root / "preset.yml"
-              manifest_kind = "preset"
-          if not manifest_path.is_file():
-              raise SystemExit("expected extension.yml or preset.yml")
+              raise SystemExit("expected extension.yml")
 
           data = yaml.safe_load(manifest_path.read_text(encoding="utf-8"))
           if not isinstance(data, dict):
@@ -53,15 +49,15 @@ jobs:
           if data.get("schema_version") != "1.0":
               raise SystemExit("schema_version must be 1.0")
 
-          meta = data.get(manifest_kind)
+          meta = data.get("extension")
           if not isinstance(meta, dict):
-              raise SystemExit(f"missing {manifest_kind} metadata")
+              raise SystemExit("missing extension metadata")
 
           item_id = meta.get("id")
           version = meta.get("version")
           repository = meta.get("repository")
           if not isinstance(item_id, str) or not re.fullmatch(r"[a-z][a-z0-9-]*", item_id):
-              raise SystemExit(f"invalid {manifest_kind} id: {item_id!r}")
+              raise SystemExit(f"invalid extension id: {item_id!r}")
           if not isinstance(version, str) or not re.fullmatch(r"\d+\.\d+\.\d+", version):
               raise SystemExit(f"invalid semver version: {version!r}")
           if not isinstance(repository, str) or not repository.startswith("https://github.com/"):
@@ -80,34 +76,22 @@ jobs:
               raise SystemExit("provides must be a mapping")
 
           referenced_files = []
-          if manifest_kind == "extension":
-              commands = provides.get("commands")
-              if not isinstance(commands, list) or not commands:
-                  raise SystemExit("extension provides.commands must be a non-empty list")
-              for command in commands:
-                  if not isinstance(command, dict):
-                      raise SystemExit("command entries must be mappings")
-                  name = command.get("name")
-                  file_name = command.get("file")
-                  if not isinstance(name, str) or not name.startswith("speckit."):
-                      raise SystemExit(f"invalid command name: {name!r}")
-                  if not isinstance(file_name, str):
-                      raise SystemExit(f"command {name!r} missing file")
-                  referenced_files.append(file_name)
-              for config in provides.get("config", []) or []:
-                  if isinstance(config, dict) and isinstance(config.get("template"), str):
-                      referenced_files.append(config["template"])
-          else:
-              templates = provides.get("templates")
-              if not isinstance(templates, list) or not templates:
-                  raise SystemExit("preset provides.templates must be a non-empty list")
-              for template in templates:
-                  if not isinstance(template, dict):
-                      raise SystemExit("template entries must be mappings")
-                  file_name = template.get("file")
-                  if not isinstance(file_name, str):
-                      raise SystemExit(f"template {template.get('name')!r} missing file")
-                  referenced_files.append(file_name)
+          commands = provides.get("commands")
+          if not isinstance(commands, list) or not commands:
+              raise SystemExit("extension provides.commands must be a non-empty list")
+          for command in commands:
+              if not isinstance(command, dict):
+                  raise SystemExit("command entries must be mappings")
+              name = command.get("name")
+              file_name = command.get("file")
+              if not isinstance(name, str) or not name.startswith("speckit."):
+                  raise SystemExit(f"invalid command name: {name!r}")
+              if not isinstance(file_name, str):
+                  raise SystemExit(f"command {name!r} missing file")
+              referenced_files.append(file_name)
+          for config in provides.get("config", []) or []:
+              if isinstance(config, dict) and isinstance(config.get("template"), str):
+                  referenced_files.append(config["template"])
 
           missing = [path for path in referenced_files if not (root / path).is_file()]
           if missing:
