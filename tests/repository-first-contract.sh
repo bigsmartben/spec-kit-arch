@@ -130,6 +130,7 @@ search '"const": "development-view"' schemas/architecture-artifacts.schema.json 
 search '"const": "dependency-matrix"' schemas/architecture-artifacts.schema.json >/dev/null
 search '"minItems": 1' schemas/architecture-artifacts.schema.json >/dev/null
 test -f scripts/bash/validate-arch-artifacts.sh
+test -x scripts/bash/validate-arch-artifacts.sh
 test -f scripts/powershell/validate-arch-artifacts.ps1
 search "Preserve existing non-placeholder facts" commands/speckit.arch.development-reverse.md >/dev/null
 search "must not be copied verbatim into 4\\+1 views|must not be copied verbatim into architecture views" commands/speckit.arch.development-reverse.md >/dev/null
@@ -161,6 +162,7 @@ cp -R commands scripts templates schemas "$tmpdir/.specify/extensions/arch/"
     test -f .specify/memory/architecture-physical-view.md
     test -f .specify/extensions/arch/schemas/architecture-artifacts.schema.json
     test -f .specify/extensions/arch/scripts/bash/validate-arch-artifacts.sh
+    test -x .specify/extensions/arch/scripts/bash/validate-arch-artifacts.sh
     test -f .specify/extensions/arch/scripts/powershell/validate-arch-artifacts.ps1
 
     if validator_json=$(.specify/extensions/arch/scripts/bash/validate-arch-artifacts.sh --json); then
