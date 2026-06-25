@@ -3,7 +3,7 @@ schema_version: "1.0"
 extension:
   id: arch
   name: "Architecture Workflow"
-  version: "1.2.1"
+  version: "1.2.2"
   description: "Generate or reverse project-level 4+1 architecture views with per-view and full-workflow commands"
   author: bigsmartben
   repository: https://github.com/bigsmartben/spec-kit-arch

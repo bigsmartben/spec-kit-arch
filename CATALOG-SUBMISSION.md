@@ -2,11 +2,11 @@
 
 Extension ID: arch
 Name: Architecture Workflow
-Version: 1.2.1
+Version: 1.2.2
 Description: Generate or reverse project-level 4+1 architecture views with per-view and full-workflow commands
 Author: bigsmartben
 Repository URL: https://github.com/bigsmartben/spec-kit-arch
-Download URL: https://github.com/bigsmartben/spec-kit-arch/archive/refs/tags/v1.2.1.zip
+Download URL: https://github.com/bigsmartben/spec-kit-arch/archive/refs/tags/v1.2.2.zip
 Documentation URL: https://github.com/bigsmartben/spec-kit-arch#readme
 License: MIT
 Required Spec Kit version: >=0.8.10.dev0
@@ -30,4 +30,4 @@ Key features:
 Testing performed:
 - Local development install with `specify extension add --dev /home/administrator/github/spec-kit-arch`.
 - Bash setup helper verified with `.specify/extensions/arch/scripts/bash/setup-arch.sh --json`.
-- Release ZIP install to verify after publishing `v1.2.1`: `specify extension add arch --from https://github.com/bigsmartben/spec-kit-arch/archive/refs/tags/v1.2.1.zip`.
+- Release ZIP install to verify after publishing `v1.2.2`: `specify extension add arch --from https://github.com/bigsmartben/spec-kit-arch/archive/refs/tags/v1.2.2.zip`.

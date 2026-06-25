@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v1.2.2 - 2026-06-25
+
 - Use CLI-compatible command names such as `/speckit.arch.scenario-generate` and `/speckit.arch.scenario-reverse`.
 - Add `/speckit.arch.full-generate` for one-command forward generation of all 4+1 views and synthesis.
 - Add `/speckit.arch.full-reverse` for one-command reverse generation of repo facts, all 4+1 views, and synthesis.

@@ -29,7 +29,7 @@ specify extension info arch
 Community catalog entries may be discovery-only. Install the published release directly from GitHub:
 
 ```bash
-specify extension add arch --from https://github.com/bigsmartben/spec-kit-arch/archive/refs/tags/v1.2.1.zip
+specify extension add arch --from https://github.com/bigsmartben/spec-kit-arch/archive/refs/tags/v1.2.2.zip
 ```
 
 Install from a local development checkout:
