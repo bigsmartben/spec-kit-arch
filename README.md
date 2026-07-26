@@ -90,7 +90,7 @@ Remove this extension after all integrations and team documentation use
 Published v3 release:
 
 ```bash
-specify extension add arch --from https://github.com/bigsmartben/spec-kit-arch/archive/refs/tags/v3.0.0.zip
+specify extension add arch --from https://github.com/bigsmartben/spec-kit-arch/releases/download/v3.0.1/arch-v3.0.1.zip
 ```
 
 Local development checkout:
