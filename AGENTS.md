@@ -6,9 +6,7 @@ This repository is a Spec Kit community extension source project for `arch`.
 
 - `extension.yml` is the extension manifest and must stay aligned with declared files.
 - `commands/` contains Spec Kit command templates.
-- `templates/` contains architecture artifact templates.
-- `schemas/` contains architecture artifact schemas.
-- `scripts/` contains setup helpers.
+- `commands/` contains only write-free migration entrypoints.
 - `tests/repository-first-contract.sh` is the main contract test.
 
 ## Source Workflow
@@ -16,7 +14,11 @@ This repository is a Spec Kit community extension source project for `arch`.
 - Develop extension source changes in this repository.
 - Release versioned source artifacts from this repository.
 - Keep `README.md`, `CHANGELOG.md`, `CATALOG-SUBMISSION.md`, manifests, and tests aligned.
-- Run `bash tests/repository-first-contract.sh` after behavior, command, template, schema, or setup-script changes.
+- Do not reintroduce Architecture generation, 4+1 reasoning, templates, schemas,
+  setup scripts, or Markdown Validators. Those responsibilities moved to the
+  Constitution lifecycle in `workflow-preset`.
+- Run `bash tests/repository-first-contract.sh` after command, manifest, or
+  migration documentation changes.
 
 ## Integration Boundary
 
