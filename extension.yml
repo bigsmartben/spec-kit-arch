@@ -3,7 +3,7 @@ schema_version: "1.0"
 extension:
   id: arch
   name: "Architecture Command Migration"
-  version: "3.0.0"
+  version: "3.0.1"
   description: "Redirect retired architecture commands to the Constitution-managed project Architecture lifecycle"
   author: bigsmartben
   repository: https://github.com/bigsmartben/spec-kit-arch
@@ -17,10 +17,10 @@ provides:
   commands:
     - name: speckit.arch.generate
       file: commands/speckit.arch.generate.md
-      description: "Redirect the retired generate command to /speckit.constitution"
+      description: "Redirect the retired generate command to the Constitution workflow"
     - name: speckit.arch.reverse
       file: commands/speckit.arch.reverse.md
-      description: "Redirect the retired reverse command to brownfield /speckit.constitution"
+      description: "Redirect the retired reverse command to the brownfield Constitution workflow"
 
 tags:
   - architecture

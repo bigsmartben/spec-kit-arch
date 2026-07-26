@@ -1,6 +1,12 @@
 # Changelog
 
-## v3.0.0 - Unreleased
+## v3.0.1 - 2026-07-26
+
+- Replace platform-specific slash command references in compatibility prompts
+  with Spec Kit command placeholders so every agent integration resolves the
+  Constitution handoff correctly.
+
+## v3.0.0 - 2026-07-26
 
 - Retire standalone Architecture generation and move the project Architecture
   lifecycle into `workflow-preset` `/speckit.constitution`.

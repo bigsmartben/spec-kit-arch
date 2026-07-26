@@ -12,7 +12,7 @@ search() {
     fi
 }
 
-search 'version: "3\.0\.0"' extension.yml >/dev/null
+search 'version: "3\.0\.1"' extension.yml >/dev/null
 search 'name: speckit\.arch\.generate' extension.yml >/dev/null
 search 'name: speckit\.arch\.reverse' extension.yml >/dev/null
 search 'Redirect the retired generate command' extension.yml >/dev/null
@@ -23,7 +23,11 @@ test -f commands/speckit.arch.reverse.md
 
 for command in commands/speckit.arch.generate.md commands/speckit.arch.reverse.md; do
     search 'ARCH_COMMAND_RETIRED' "$command" >/dev/null
-    search '/speckit\.constitution' "$command" >/dev/null
+    search '__SPECKIT_COMMAND_CONSTITUTION__' "$command" >/dev/null
+    if search '/speckit\.' "$command" >/dev/null; then
+        echo "platform-specific command reference remains in: $command" >&2
+        exit 1
+    fi
     search 'Do not write `.specify/memory/architecture\.md`' "$command" >/dev/null
 done
 
